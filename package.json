@@ -1,0 +1,24 @@
+{
+  "name": "ludum-dare-42",
+  "version": "0.0.0",
+  "description": "The game I made at CampJS IX for Ludum Dare 42.",
+  "license": "MIT",
+  "private": true,
+  "contributors": [
+    "Colin Gourlay <colin@colin-gourlay.com>"
+  ],
+  "aunty": {
+    "type": "react"
+  },
+  "scripts": {
+    "start": "aunty serve",
+    "test": "aunty test"
+  },
+  "devDependencies": {
+    "@abcnews/aunty": "^9.5.1"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
