@@ -1,8 +1,8 @@
 const React = require('react');
 
 const { Provider, Consumer } = React.createContext({
-  text: '',
-  updateText: () => {}
+  data: {},
+  dispatch: () => {}
 });
 
 function getDisplayName(Component) {

@@ -1,7 +1,3 @@
-.root p {
-  font-weight: bold;
-}
-
-.root input {
-  font-size: inherit;
+.root {
+  background-color: papayawhip;
 }

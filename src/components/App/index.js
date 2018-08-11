@@ -1,7 +1,11 @@
 const React = require('react');
 const { Provider } = require('../AppContext');
-const Game = require('../Game');
 const styles = require('./styles.css');
+
+const SCENES = {
+  game: require('../Game'),
+  menu: require('../Menu')
+};
 
 class App extends React.Component {
   constructor() {
@@ -9,7 +13,8 @@ class App extends React.Component {
 
     this.state = {
       data: {
-        text: 'Ludum Dare 42'
+        scene: 'menu',
+        title: 'Ludum Dare 42'
       },
       dispatch: this.dispatch.bind(this)
     };
@@ -26,10 +31,13 @@ class App extends React.Component {
   }
 
   render() {
+    const { scene } = this.state.data;
+    const SceneComponent = SCENES[scene];
+
     return (
       <Provider value={this.state}>
         <div className={styles.root}>
-          <Game />
+          <SceneComponent />
         </div>
       </Provider>
     );

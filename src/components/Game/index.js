@@ -3,23 +3,16 @@ const { withAppContext } = require('../AppContext');
 const styles = require('./styles.css');
 
 class Game extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onInputChange = this.onInputChange.bind(this);
-  }
-
-  onInputChange({ target }) {
-    this.props.dispatch('MERGE', { text: target.value });
-  }
-
   render() {
-    const { text } = this.props.data;
+    const {
+      data: { title },
+      dispatch
+    } = this.props;
 
     return (
       <div className={styles.root}>
-        <input defaultValue={text} onChange={this.onInputChange} onInput={this.onInputChange} />
-        <p>{text}</p>
+        <h1>{`${title} > Game`}</h1>
+        <button onClick={() => dispatch('MERGE', { scene: 'menu' })}>Menu</button>
       </div>
     );
   }
