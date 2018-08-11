@@ -9,15 +9,17 @@ class Game extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange(event) {
-    this.props.updateText(event.target.value);
+  onInputChange({ target }) {
+    this.props.dispatch('MERGE', { text: target.value });
   }
 
   render() {
+    const { text } = this.props.data;
+
     return (
       <div className={styles.root}>
-        <input defaultValue={this.props.text} onChange={this.onInputChange} onInput={this.onInputChange} />
-        <p>{this.props.text}</p>
+        <input defaultValue={text} onChange={this.onInputChange} onInput={this.onInputChange} />
+        <p>{text}</p>
       </div>
     );
   }

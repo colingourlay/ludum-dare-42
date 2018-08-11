@@ -8,13 +8,21 @@ class App extends React.Component {
     super();
 
     this.state = {
-      text: 'Ludum Dare 42',
-      updateText: this.updateText.bind(this)
+      data: {
+        text: 'Ludum Dare 42'
+      },
+      dispatch: this.dispatch.bind(this)
     };
   }
 
-  updateText(text) {
-    this.setState({ text });
+  dispatch(type, actionData) {
+    switch (type) {
+      case 'MERGE':
+        this.setState(({ data }) => ({ data: { ...data, ...actionData } }));
+        break;
+      default:
+        break;
+    }
   }
 
   render() {
