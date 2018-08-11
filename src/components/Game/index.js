@@ -1,20 +1,26 @@
 const React = require('react');
-const { Consumer } = require('../AppContext');
+const { withAppContext } = require('../AppContext');
 const styles = require('./styles.css');
 
 class Game extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onInputChange = this.onInputChange.bind(this);
+  }
+
+  onInputChange(event) {
+    this.props.updateText(event.target.value);
+  }
+
   render() {
     return (
-      <Consumer>
-        {({ text, updateText }) => (
-          <div className={styles.root}>
-            <input value={text} onInput={event => updateText(event.target.value)} />
-            <p>{text}</p>
-          </div>
-        )}
-      </Consumer>
+      <div className={styles.root}>
+        <input defaultValue={this.props.text} onChange={this.onInputChange} onInput={this.onInputChange} />
+        <p>{this.props.text}</p>
+      </div>
     );
   }
 }
 
-module.exports = Game;
+module.exports = withAppContext(Game);
